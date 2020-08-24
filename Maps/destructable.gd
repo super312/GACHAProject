@@ -1,17 +1,23 @@
 extends StaticBody2D
 
+class_name Destructable #Código base para objetos destrutiveis no mapa.
+
+#status nescessarios para calculo de dano.
 var life = 50
 var def = 5
 var res = 5
 
-
-func _ready():
-	pass
-
-func hit(damage):
-	if damage < life:
+#Verifica se ira sobreviver ao dano recebido (dano já calculado).
+func hit(damage, dir): #dir - direção do knock back (a ser implementado).
+	if damage < life: #Reduz a vida ou chama a função de morte.
 		life -= damage
+		print(damage)
 	else:
-		queue_free()
+		print(damage)
+		death()
 	
-	pass
+
+#Em forma de função para poder ser re-escrito animações e outras funções
+#para destrutiveis diferentes.
+func death():
+	queue_free() #Deleta o objeto da cena.

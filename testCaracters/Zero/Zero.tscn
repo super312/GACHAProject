@@ -12,7 +12,7 @@ radius = 21.854
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 66.7624, 36.3363 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=4]
 resource_name = "AIRATTACK1"
 length = 0.6
 tracks/0/type = "value"
@@ -40,8 +40,7 @@ tracks/1/keys = {
 "values": [ 51 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "ATTACK1"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -67,8 +66,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "ATTACK2"
+[sub_resource type="Animation" id=6]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -95,8 +93,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "ATTACK3"
+[sub_resource type="Animation" id=7]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -123,7 +120,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -139,7 +136,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -155,7 +152,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 7 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -170,7 +167,7 @@ tracks/0/keys = {
 "values": [ 21, 22 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -197,8 +194,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "SPECIAL1"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -224,8 +220,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "SPECIAL2"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -261,7 +256,7 @@ shape = SubResource( 1 )
 
 [node name="Sword_area" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 12
 
 [node name="SWORD_HITBOX" type="CollisionShape2D" parent="Sword_area"]
 position = Vector2( -70, 8 )
@@ -284,16 +279,16 @@ frame = 2
 region_rect = Rect2( -89.0523, 543.165, 18.5062, 101.784 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/AIRATTACK1 = SubResource( 13 )
-anims/ATTACK1 = SubResource( 4 )
-anims/ATTACK2 = SubResource( 5 )
-anims/ATTACK3 = SubResource( 6 )
-anims/IDLE = SubResource( 7 )
-anims/RUN = SubResource( 8 )
-anims/SHOOT1 = SubResource( 9 )
-anims/SHOOT2 = SubResource( 10 )
-anims/SPECIAL1 = SubResource( 11 )
-anims/SPECIAL2 = SubResource( 12 )
+anims/AIRATTACK1 = SubResource( 4 )
+anims/ATTACK1 = SubResource( 5 )
+anims/ATTACK2 = SubResource( 6 )
+anims/ATTACK3 = SubResource( 7 )
+anims/IDLE = SubResource( 8 )
+anims/RUN = SubResource( 9 )
+anims/SHOOT1 = SubResource( 10 )
+anims/SHOOT2 = SubResource( 11 )
+anims/SPECIAL1 = SubResource( 12 )
+anims/SPECIAL2 = SubResource( 13 )
 
 [node name="SHOOT_POSITION" type="Position2D" parent="."]
 position = Vector2( -70, 8 )

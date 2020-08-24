@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://testCaracters/Zero/Zero.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/destructable.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 563.5, 39.5442 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 36.5343, 387.514 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 331.027, 20.9505 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 30.7213
+height = 33.8251
+
+[node name="TestMap" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 498.327, 592.837 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -32.9354, 250.595 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1026.72, 244.867 )
+shape = SubResource( 2 )
+
+[node name="Zero" parent="." instance=ExtResource( 1 )]
+position = Vector2( 234.147, 463.078 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 568.334, 302.43 )
+shape = SubResource( 3 )
+one_way_collision = true
+one_way_collision_margin = 2.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( 945.41, 474.864 )
+shape = SubResource( 4 )

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/CaractersControl.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Spawn.gd" type="Script" id=2]
+[ext_resource path="res://prefabs/PlayableCaracters/LifeBarBorder.png" type="Texture" id=3]
+[ext_resource path="res://prefabs/PlayableCaracters/LifeBar.png" type="Texture" id=4]
 
 [node name="CaractersControl" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,3 +18,69 @@ position = Vector2( 80, 0 )
 
 [node name="Position3" type="Position2D" parent="Spawn"]
 position = Vector2( -80, 0 )
+
+[node name="Camera" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Camera"]
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera/Camera2D"]
+
+[node name="Control" type="Control" parent="Camera/Camera2D/CanvasLayer"]
+margin_right = 101.0
+margin_bottom = 87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Camera2D/CanvasLayer/Control"]
+margin_right = 100.0
+margin_bottom = 75.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Char1" type="TextureProgress" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 20.0
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
+tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Char2" type="TextureProgress" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer"]
+margin_top = 24.0
+margin_right = 100.0
+margin_bottom = 44.0
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
+tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Char3" type="TextureProgress" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer"]
+margin_top = 48.0
+margin_right = 100.0
+margin_bottom = 68.0
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
+tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Camera/Camera2D/CanvasLayer/Control"]

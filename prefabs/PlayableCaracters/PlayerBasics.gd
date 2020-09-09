@@ -56,6 +56,10 @@ func _physics_process(delta):
 	
 	if is_playing:
 		
+		if Input.is_action_just_pressed("UI_damageTest"):
+			damage(30)
+			pass
+		
 		var x = 0
 		
 		if !is_dashing and can_move and !is_attacking:
@@ -149,4 +153,5 @@ func damage(value):
 		death()
 
 func death():
-	queue_free()
+	#queue_free()
+	pass

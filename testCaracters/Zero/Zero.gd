@@ -101,8 +101,8 @@ func fast_attack():
 			
 	elif state == 5:
 		if anim.current_animation_position > 0.4:
-			anim.play("ATTACK3")
 			state == 6
+			anim.play("ATTACK3")
 		
 	
 
@@ -120,14 +120,13 @@ func strong_attack():
 		yield(anim, "animation_finished")
 		is_attacking = false
 		state = 0
-	elif state == 5:
-		if anim.current_animation_position > 0.4:
-			anim.play("SHOOT2")
-			state = 8
-			yield(get_tree().create_timer(0.2), "timeout")
-			self.add_child(b)
-			b.position = $SHOOT_POSITION.position
-			b.set_bullet(atk,dir)
+	elif state == 5 and anim.current_animation_position > 0.4:
+		anim.play("SHOOT2")
+		state = 8
+		yield(get_tree().create_timer(0.2), "timeout")
+		self.add_child(b)
+		b.position = $SHOOT_POSITION.position
+		b.set_bullet(atk,dir)
 
 #Especial 1 (a).
 func special1():

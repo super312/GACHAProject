@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ryu.png-058b911eb375fbec23fe9774b44d5054.stex"
+path="res://.import/dbqanrh-f0a38661-006d-4a5c-a1d8-18cfdd45de22.png-7e3bf721de9daf127ae8a1d55f7648ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://testCaracters/Ryu.png"
-dest_files=[ "res://.import/Ryu.png-058b911eb375fbec23fe9774b44d5054.stex" ]
+source_file="res://testCaracters/Mario/dbqanrh-f0a38661-006d-4a5c-a1d8-18cfdd45de22.png"
+dest_files=[ "res://.import/dbqanrh-f0a38661-006d-4a5c-a1d8-18cfdd45de22.png-7e3bf721de9daf127ae8a1d55f7648ec.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

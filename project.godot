@@ -62,13 +62,19 @@ UI_special2={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
  ]
 }
+UI_change={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Walls"
-2d_physics/layer_3="Destructables"
-2d_physics/layer_4="Enemies"
+2d_physics/layer_3="Solid_Destructables"
+2d_physics/layer_4="Null_Destructables"
+2d_physics/layer_5="Enemies"
 
 [rendering]
 

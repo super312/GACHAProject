@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name PlayerBasics
 
+var is_playing = false
+
 #variaveis de física
 var speed = 900
 var grav = 25
@@ -11,6 +13,8 @@ var jump = -750
 var vector = Vector2()
 
 #variaveis de status do personagem
+var element = 0 # 0-Neutro / 1-Fogo / 2-água / 3-terra / 4-vento
+var clan = "none"
 var life = 300
 var mana = 50
 var atk = 10
@@ -37,6 +41,8 @@ var can_move = true #Pode se mover.
 var state = 0 #State atual.
 var is_attacking = false #Esta atacando.
 
+var stop_in_air = false
+
 func _ready():
 	clife = life
 	cmana = mana
@@ -44,81 +50,89 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if !is_ad: #não adiciona gravidade durante air dash.
+	if !is_ad and !stop_in_air: #não adiciona gravidade durante air dash.
 		vector.y += grav #adiciona gravidade.
 	var friction = false
 	
-	var x = 0
-	
-	if !is_dashing and can_move and !is_attacking:
-		#Inputs de movimentação.
-		if Input.is_action_pressed("ui_right"):
-			vector.x = min(vector.x + accel, speed * spd * delta)
-			x = 1
-			dir = 0
-			state = 1
-		if Input.is_action_pressed("ui_left"):
-			vector.x = max(vector.x - accel, -(speed * spd * delta))
-			x = 1
-			dir = 1
-			state = 1
-		if x == 0: #Ativa fricção ao estar parado.
-			friction = true
-			state = 0
+	if is_playing:
 		
-	elif is_attacking: #Adiciona fricção ao atacar.
-		friction = true
-	else: #Entra apenas durante o dash.
-		#Define direção e força do dash
-		match dir:
-				0:
-					vector.x = (speed * spd * delta) * 4
-				1:
-					vector.x = -(speed * spd * delta) * 4
+		var x = 0
 		
-	
-	if is_on_floor():
-		can_dj = true
-		can_ad = true
-		#Input para descer de semi-solid plataforms.
-		if Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("ui_up"):
-			self.position.y += 2
-		elif Input.is_action_just_pressed("ui_up") and !is_dashing and !is_attacking:
-			#Input de pulo
-			vector.y = jump
-		if Input.is_action_just_pressed("UI_dash") and can_dash:
-			#Script de dash.
-			is_dashing = true
-			can_dash = false
-			can_move = false
-			yield(get_tree().create_timer(0.15), "timeout")
-			is_dashing = false
-			yield(get_tree().create_timer(0.1), "timeout")
-			can_move = true
-			yield(get_tree().create_timer(0.1), "timeout")
-			can_dash = true
-		if friction and !is_dashing: #Para lentamente / fricção
-			vector.x = lerp(vector.x, 0, 0.3)
-	else:
-		state = 2
-		#Dash no ar.
-		if Input.is_action_just_pressed("UI_dash") and has_ad and can_ad:
-			is_dashing = true
-			is_ad = true
-			can_ad = false
-			can_move = false
+		if !is_dashing and can_move and !is_attacking:
+			#Inputs de movimentação.
+			if Input.is_action_pressed("ui_right"):
+				vector.x = min(vector.x + accel, speed * spd * delta)
+				x = 1
+				dir = 0
+				state = 1
+			if Input.is_action_pressed("ui_left"):
+				vector.x = max(vector.x - accel, -(speed * spd * delta))
+				x = 1
+				dir = 1
+				state = 1
+			if x == 0: #Ativa fricção ao estar parado.
+				friction = true
+				state = 0
 			
-			yield(get_tree().create_timer(0.1), "timeout")
-			is_dashing = false
-			is_ad = false
-			yield(get_tree().create_timer(0.1), "timeout")
-			can_move = true
-		if Input.is_action_just_pressed("ui_up") and has_dj and can_dj:
-			#double jump.
-			vector.y = jump
-			can_dj = false
-		if friction: #fricção reduzida
-			vector.x = lerp(vector.x, 0, 0.075)
+		elif is_attacking: #Adiciona fricção ao atacar.
+			friction = true
+		else: #Entra apenas durante o dash.
+			#Define direção e força do dash
+			match dir:
+					0:
+						vector.x = (speed * spd * delta) * 4
+					1:
+						vector.x = -(speed * spd * delta) * 4
+			
+		
+		if is_on_floor():
+			can_dj = true
+			can_ad = true
+			#Input para descer de semi-solid plataforms.
+			if Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("ui_up"):
+				self.position.y += 2
+			elif Input.is_action_just_pressed("ui_up") and !is_dashing and !is_attacking:
+				#Input de pulo
+				vector.y = jump
+			if Input.is_action_just_pressed("UI_dash") and can_dash:
+				#Script de dash.
+				is_dashing = true
+				can_dash = false
+				can_move = false
+				yield(get_tree().create_timer(0.15), "timeout")
+				is_dashing = false
+				yield(get_tree().create_timer(0.1), "timeout")
+				can_move = true
+				yield(get_tree().create_timer(0.1), "timeout")
+				can_dash = true
+			if friction and !is_dashing: #Para lentamente / fricção
+				if is_attacking:
+					vector.x = lerp(vector.x, 0, 0.07)
+				else:
+					vector.x = lerp(vector.x, 0, 0.3)
+		else:
+			state = 2
+			#Dash no ar.
+			if Input.is_action_just_pressed("UI_dash") and has_ad and can_ad:
+				is_dashing = true
+				is_ad = true
+				can_ad = false
+				can_move = false
+				
+				yield(get_tree().create_timer(0.1), "timeout")
+				is_dashing = false
+				is_ad = false
+				yield(get_tree().create_timer(0.1), "timeout")
+				can_move = true
+			if Input.is_action_just_pressed("ui_up") and has_dj and can_dj:
+				#double jump.
+				vector.y = jump
+				can_dj = false
+			if friction: #fricção reduzida
+				vector.x = lerp(vector.x, 0, 0.03)
+	else:
+		pass
+	
 	
 	#Bom e velho move_and_slide, acredito dispensar apresentações kkk.
 	vector = move_and_slide(vector, Vector2.UP)

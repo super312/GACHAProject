@@ -14,10 +14,8 @@ script = ExtResource( 2 )
 [node name="Position1" type="Position2D" parent="Spawn"]
 
 [node name="Position2" type="Position2D" parent="Spawn"]
-position = Vector2( 80, 0 )
 
 [node name="Position3" type="Position2D" parent="Spawn"]
-position = Vector2( -80, 0 )
 
 [node name="Camera" type="Node2D" parent="."]
 
@@ -25,19 +23,22 @@ position = Vector2( -80, 0 )
 current = true
 limit_smoothed = true
 smoothing_enabled = true
+drag_margin_left = 0.4
+drag_margin_top = 0.4
+drag_margin_right = 0.4
+drag_margin_bottom = 0.4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera/Camera2D"]
 
 [node name="Control" type="Control" parent="Camera/Camera2D/CanvasLayer"]
-margin_right = 101.0
-margin_bottom = 87.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera/Camera2D/CanvasLayer/Control"]
 margin_right = 100.0
-margin_bottom = 75.0
+margin_bottom = 68.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,10 +48,9 @@ margin_right = 100.0
 margin_bottom = 20.0
 value = 70.0
 texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
-tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -61,10 +61,9 @@ margin_right = 100.0
 margin_bottom = 44.0
 value = 70.0
 texture_under = ExtResource( 4 )
-texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
-tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,6 +74,26 @@ margin_right = 100.0
 margin_bottom = 68.0
 value = 70.0
 texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
+tint_progress = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween1" type="Tween" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer"]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Camera/Camera2D/CanvasLayer/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Char1" type="TextureProgress" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer2"]
+margin_right = 100.0
+margin_bottom = 20.0
+value = 70.0
 texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
@@ -83,4 +102,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="Camera/Camera2D/CanvasLayer/Control"]
+[node name="Char2" type="TextureProgress" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer2"]
+margin_top = 24.0
+margin_right = 100.0
+margin_bottom = 44.0
+value = 70.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
+tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Char3" type="TextureProgress" parent="Camera/Camera2D/CanvasLayer/Control/VBoxContainer2"]
+margin_top = 48.0
+margin_right = 100.0
+margin_bottom = 68.0
+value = 70.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.917647 )
+tint_progress = Color( 0.117647, 0.952941, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Camera/Camera2D/CanvasLayer/Control"]
+margin_left = 102.0
+margin_right = 142.0
+margin_bottom = 69.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Camera2D/CanvasLayer/Control/Control"]
+margin_right = 40.0
+margin_bottom = 68.0

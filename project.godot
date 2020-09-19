@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "PlayerBasics",
 "language": "GDScript",
 "path": "res://prefabs/PlayableCaracters/PlayerBasics.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "enemyBasics",
+"language": "GDScript",
+"path": "res://prefabs/EnemyBasic/EnemyBasics.gd"
 } ]
 _global_script_class_icons={
 "Destructable": "",
-"PlayerBasics": ""
+"PlayerBasics": "",
+"enemyBasics": ""
 }
 
 [application]

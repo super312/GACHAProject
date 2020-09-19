@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/CaractersControl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Maps/destructable.gd" type="Script" id=2]
+[ext_resource path="res://Maps/TestMap.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 563.5, 39.5442 )
+extents = Vector2( 2735.16, 39.5442 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 36.5343, 387.514 )
@@ -17,6 +18,7 @@ radius = 30.7213
 height = 33.8251
 
 [node name="TestMap" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -27,11 +29,11 @@ position = Vector2( 498.327, 592.837 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -32.9354, 250.595 )
+position = Vector2( -2196.16, 242.814 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1026.72, 244.867 )
+position = Vector2( 3209.33, 237.086 )
 shape = SubResource( 2 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -39,7 +41,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 568.334, 365.026 )
+position = Vector2( 13.6069, 457.84 )
 shape = SubResource( 3 )
 one_way_collision = true
 one_way_collision_margin = 2.0
@@ -50,8 +52,10 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 543.934, 477.022 )
+position = Vector2( 569.836, 300.027 )
 shape = SubResource( 4 )
 
 [node name="CaractersControl" parent="." instance=ExtResource( 1 )]
-position = Vector2( 570.127, 276.342 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 954.044, 461.913 )

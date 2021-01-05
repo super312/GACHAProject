@@ -7,10 +7,12 @@ var life = 50
 var def = 5
 var res = 5
 
+const team_id = -1
+
 export var type = true
 
 #Verifica se ira sobreviver ao dano recebido (dano já calculado).
-func hit(damage, dir): #dir - direção do knock back (a ser implementado).
+func damage(damage, dir, kb): #dir - direção do knock back (a ser implementado).
 	if damage < life: #Reduz a vida ou chama a função de morte.
 		life -= damage
 		print(damage)

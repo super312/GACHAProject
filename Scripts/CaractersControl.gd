@@ -26,11 +26,12 @@ var follow_player = true
 var stay_pos = null
 
 func _ready():
+	self.add_to_group("control")
 	spawn()
 	party = get_tree().get_nodes_in_group("Party")
 	party[0].is_playing = true
 	set_max_HP()
-	for i in range(3):
+	for i in range(party.size()):
 		party[i].connect("took_damage", self, "current_HP")
 		party[i].me = i
 	
@@ -75,8 +76,7 @@ func game_over():
 	get_tree().reload_current_scene()
 
 func spawn():
-	var i = 0
-	for i in range(3):
+	for i in range(team.size()):
 		var c = spawn.get_char(team[i])
 		root.add_child(c)
 		c.position = pos[1].position
@@ -90,7 +90,6 @@ func current_HP(i):
 	hp[i+3].value = party[i].clife
 	twe.interpolate_property(hp[i],"value",hp[i].value,party[i].clife,0.3,Tween.TRANS_SINE,Tween.EASE_IN_OUT, 0.3)
 	twe.start()
-	
 	#hp[i].value = party[i].clife
 
 func set_max_HP():
@@ -103,7 +102,10 @@ func set_max_HP():
 func set_team(chars):
 	team = chars
 
-
+func battle(is_in):
+	for i in range(party.size()):
+		party[i].is_in_battle = is_in
+	
 
 
 

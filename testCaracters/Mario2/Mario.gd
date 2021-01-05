@@ -13,9 +13,9 @@ func _physics_process(delta):
 	var o = 0
 	
 	match dir:
-		0:
-			$AttackHitbox/CollisionShape2D.position.x = 50
 		1:
+			$AttackHitbox/CollisionShape2D.position.x = 50
+		-1:
 			$AttackHitbox/CollisionShape2D.position.x = -50
 	
 	
@@ -57,9 +57,9 @@ func strong_attack():
 
 func animation():
 	match dir: #inverte o sprite dependendo a direção.
-		0:
-			sprite.flip_h = false
 		1:
+			sprite.flip_h = false
+		-1:
 			sprite.flip_h = true
 	
 	if !is_attacking:

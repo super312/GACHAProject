@@ -15,19 +15,25 @@ _global_script_classes=[ {
 "path": "res://Maps/destructable.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "EnemyBasics",
+"language": "GDScript",
+"path": "res://prefabs/EnemyBasic/EnemyBasics.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "PlayerBasics",
 "language": "GDScript",
 "path": "res://prefabs/PlayableCaracters/PlayerBasics.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "enemyBasics",
+"base": "Node",
+"class": "buff_debuff",
 "language": "GDScript",
-"path": "res://prefabs/EnemyBasic/EnemyBasics.gd"
+"path": "res://prefabs/PlayableCaracters/Buffs_Debuffs.gd"
 } ]
 _global_script_class_icons={
 "Destructable": "",
+"EnemyBasics": "",
 "PlayerBasics": "",
-"enemyBasics": ""
+"buff_debuff": ""
 }
 
 [application]
@@ -76,6 +82,11 @@ UI_change={
 UI_damageTest={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+UI_spawn_test={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
  ]
 }
 

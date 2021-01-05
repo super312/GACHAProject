@@ -59,3 +59,25 @@ shape = SubResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 954.044, 461.913 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 615.72
+margin_top = 401.668
+margin_right = 697.72
+margin_bottom = 421.668
+text = "add Enemy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 740.328
+margin_top = 402.699
+margin_right = 831.328
+margin_bottom = 422.699
+text = "add Number"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
